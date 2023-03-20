@@ -44,7 +44,7 @@ public class Zoom : MonoBehaviour
                 if (distance > prevDistance)
                 {
                     Vector2 targetPosition = camera.transform.position;
-                    camera.transform.position = Vector3.Slerp(camera.transform.position);
+                    //camera.transform.position = Vector3.Slerp(camera.transform.position);
                 }
                 else if (distance < prevDistance)
                 {
