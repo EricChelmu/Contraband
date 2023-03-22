@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace InputSystem
@@ -7,8 +5,9 @@ namespace InputSystem
     public class MoveByTouch : MonoBehaviour
     {
         public int fingerID;
+
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.touchCount > 0)
             {
