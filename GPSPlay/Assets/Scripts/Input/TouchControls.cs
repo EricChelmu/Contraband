@@ -15,9 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-
-public partial class @TouchControls : IInputActionCollection2, IDisposable
-
+public partial class @TouchControls: IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
     public @TouchControls()
@@ -78,10 +76,8 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
 }");
         // Touch
         m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
-
         m_Touch_PrimaryTouch = m_Touch.FindAction("PrimaryTouch", throwIfNotFound: true);
         m_Touch_SecondaryTouch = m_Touch.FindAction("SecondaryTouch", throwIfNotFound: true);
-
     }
 
     public void Dispose()
@@ -142,7 +138,7 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
 
     // Touch
     private readonly InputActionMap m_Touch;
-    private ITouchActions m_TouchActionsCallbackInterface;
+    private List<ITouchActions> m_TouchActionsCallbackInterfaces = new List<ITouchActions>();
     private readonly InputAction m_Touch_PrimaryTouch;
     private readonly InputAction m_Touch_SecondaryTouch;
     public struct TouchActions
@@ -156,27 +152,40 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
         public static implicit operator InputActionMap(TouchActions set) { return set.Get(); }
+        public void AddCallbacks(ITouchActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TouchActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TouchActionsCallbackInterfaces.Add(instance);
+            @PrimaryTouch.started += instance.OnPrimaryTouch;
+            @PrimaryTouch.performed += instance.OnPrimaryTouch;
+            @PrimaryTouch.canceled += instance.OnPrimaryTouch;
+            @SecondaryTouch.started += instance.OnSecondaryTouch;
+            @SecondaryTouch.performed += instance.OnSecondaryTouch;
+            @SecondaryTouch.canceled += instance.OnSecondaryTouch;
+        }
+
+        private void UnregisterCallbacks(ITouchActions instance)
+        {
+            @PrimaryTouch.started -= instance.OnPrimaryTouch;
+            @PrimaryTouch.performed -= instance.OnPrimaryTouch;
+            @PrimaryTouch.canceled -= instance.OnPrimaryTouch;
+            @SecondaryTouch.started -= instance.OnSecondaryTouch;
+            @SecondaryTouch.performed -= instance.OnSecondaryTouch;
+            @SecondaryTouch.canceled -= instance.OnSecondaryTouch;
+        }
+
+        public void RemoveCallbacks(ITouchActions instance)
+        {
+            if (m_Wrapper.m_TouchActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
         public void SetCallbacks(ITouchActions instance)
         {
-            if (m_Wrapper.m_TouchActionsCallbackInterface != null)
-            {
-                @PrimaryTouch.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnPrimaryTouch;
-                @PrimaryTouch.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnPrimaryTouch;
-                @PrimaryTouch.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnPrimaryTouch;
-                @SecondaryTouch.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnSecondaryTouch;
-                @SecondaryTouch.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnSecondaryTouch;
-                @SecondaryTouch.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnSecondaryTouch;
-            }
-            m_Wrapper.m_TouchActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @PrimaryTouch.started += instance.OnPrimaryTouch;
-                @PrimaryTouch.performed += instance.OnPrimaryTouch;
-                @PrimaryTouch.canceled += instance.OnPrimaryTouch;
-                @SecondaryTouch.started += instance.OnSecondaryTouch;
-                @SecondaryTouch.performed += instance.OnSecondaryTouch;
-                @SecondaryTouch.canceled += instance.OnSecondaryTouch;
-            }
+            foreach (var item in m_Wrapper.m_TouchActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TouchActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
         }
     }
     public TouchActions @Touch => new TouchActions(this);
@@ -184,17 +193,5 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
     {
         void OnPrimaryTouch(InputAction.CallbackContext context);
         void OnSecondaryTouch(InputAction.CallbackContext context);
-
-    }
-    public TouchActions @Touch => new TouchActions(this);
-    public interface ITouchActions
-    {
-        void OnPrimaryFingerTap(InputAction.CallbackContext context);
-        void OnPrimaryFingerContact(InputAction.CallbackContext context);
-        void OnPrimaryFingerPosition(InputAction.CallbackContext context);
-        void OnSecondaryFingerPosition(InputAction.CallbackContext context);
-        void OnSecondaryFingerContact(InputAction.CallbackContext context);
-        void OnPrimaryFingerDelta(InputAction.CallbackContext context);
-        void OnSecondaryFingerDelta(InputAction.CallbackContext context);
     }
 }
