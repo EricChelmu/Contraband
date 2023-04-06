@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "RZCT3107BWA",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "RZCT3107BWA",
+        "name": "com.DefaultCompany.com.unity.template.mobile2D",
+        "processId": 8395,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,18 +13,6 @@
             "name": "com.sec.android.app.launcher",
             "processId": 2386,
             "exited": false
-        },
-        {
-            "deviceId": "RZCT3107BWA",
-            "name": "com.android.settings",
-            "processId": 4139,
-            "exited": false
-        },
-        {
-            "deviceId": "RZCT3107BWA",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 25156,
-            "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
@@ -43,6 +31,48 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 26490,
             "exited": true
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 25372,
+            "exited": true
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 26809,
+            "exited": false
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 27305,
+            "exited": false
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 28007,
+            "exited": false
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 28522,
+            "exited": false
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 29220,
+            "exited": false
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 8395,
+            "exited": false
         }
     ],
     "m_Tags": {

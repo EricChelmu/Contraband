@@ -10,46 +10,59 @@ namespace InputSystem
     {
         private InputManager inputManager;
         private Camera mainCamera;
-        private Vector3 spawnLocation;
+        //private Vector3 spawnLocation;
 
-        private Vector2 startLocation;
-        private float startTime;
+        private Vector2 startPosition;
+        private Vector2 endPosition;
+        //private float startTime;
 
-        private Vector2 currentLocation;
-        private float currentTime;
+        private Vector2 currentPosition;
+        //private float currentTime;
 
-        private Vector3 dir;
+        private Vector3 direction;
+        private float minimumDistance;
         private float speed;
+        private float speedbuffer;
         
         private void Awake()
         {
             inputManager = InputManager.Instance;
             mainCamera = GetComponent<Camera>();
-            spawnLocation = transform.position;
+            //spawnLocation = transform.position;
         }
         private void OnEnable()
         {
-            inputManager.OnPreformPrimaryFingerStart += MoveStart;
+            inputManager.OnPerformPrimaryFingerStart += MoveStart;
             inputManager.OnPerformPrimaryFingerPosition += MoveCamera;
         }
         
         private void OnDisable()
         {
-            inputManager.OnPreformPrimaryFingerStart -= MoveStart;
+            inputManager.OnPerformPrimaryFingerStart -= MoveStart;
             inputManager.OnPerformPrimaryFingerPosition -= MoveCamera;
         }
         private void MoveStart(Vector2 positionStart)
         {
-            startLocation = positionStart;
+            startPosition = positionStart;
         }
         private void MoveCamera(Vector2 screenPosition)
         {
-            currentLocation = screenPosition;
-            dir = new Vector3(currentLocation.x - startLocation.x, 0f,currentLocation.y - startLocation.y).normalized;
-            speed = (currentLocation - startLocation).magnitude * Time.deltaTime;
+            currentPosition = screenPosition;
+            direction = new Vector3(currentPosition.x - startPosition.x, 0f,currentPosition.y - startPosition.y).normalized;
+            speed = (currentPosition - startPosition).magnitude * Time.deltaTime;
             
-            transform.Translate(-dir * speed, Space.World);
-            MoveStart(currentLocation);
+            transform.Translate(-direction * 2 * speed, Space.World);
+            //SlideCamera();
+            MoveStart(currentPosition);            
+        }
+        private void SlideCamera()
+        {
+            minimumDistance = .2f;
+                for(float i = speed; i > 0;)
+                {
+                    transform.Translate(-direction * i, Space.World);
+                    i /= 1/speed;
+                }
             
         }
     }

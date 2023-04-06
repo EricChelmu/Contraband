@@ -11,13 +11,13 @@ namespace InputSystem
     public class InputManager : Singleton<InputManager>
     {
         #region Events
-        public delegate void StartPosition(Vector2 position);
         public delegate void CurrentPosition(Vector2 position);
         public delegate void Touch(bool touch);
 
-        public event StartPosition OnPreformPrimaryFingerStart;
-        public event CurrentPosition OnStartPrimaryFingerPosition;
+        public event CurrentPosition OnPerformPrimaryFingerStart;
         public event CurrentPosition OnPerformPrimaryFingerPosition;
+
+        public event Touch OnPerformPrimaryFingerTap;
         #endregion
 
         private TouchControls touchControls;
@@ -38,22 +38,14 @@ namespace InputSystem
         }
         private void Start()
         {
-            touchControls.Touch.PrimaryFingerStart.performed += ctx => PreformPrimaryFingerStart(ctx);
-            touchControls.Touch.PrimaryFingerPosition.started += ctx => StartPrimaryFingerPosition(ctx);
+            touchControls.Touch.PrimaryFingerStart.performed += ctx => PerformPrimaryFingerStart(ctx);
             touchControls.Touch.PrimaryFingerPosition.performed += ctx => PerformPrimaryFingerPosition(ctx);
         }
-        private void PreformPrimaryFingerStart(InputAction.CallbackContext context)
+        private void PerformPrimaryFingerStart(InputAction.CallbackContext context)
         {
-            if(OnPreformPrimaryFingerStart != null)
+            if(OnPerformPrimaryFingerStart != null)
             {
-                OnPreformPrimaryFingerStart(touchControls.Touch.PrimaryFingerStart.ReadValue<Vector2>());
-            }
-        }        
-        private void StartPrimaryFingerPosition(InputAction.CallbackContext context)
-        {
-            if(OnStartPrimaryFingerPosition != null) 
-            {
-                OnStartPrimaryFingerPosition(touchControls.Touch.PrimaryFingerPosition.ReadValue<Vector2>());
+                OnPerformPrimaryFingerStart(touchControls.Touch.PrimaryFingerStart.ReadValue<Vector2>());
             }
         }
         private void PerformPrimaryFingerPosition(InputAction.CallbackContext context)
@@ -62,6 +54,6 @@ namespace InputSystem
             {
                 OnPerformPrimaryFingerPosition(touchControls.Touch.PrimaryFingerPosition.ReadValue<Vector2>());                
             }
-        }  
+        }
     }
 }
