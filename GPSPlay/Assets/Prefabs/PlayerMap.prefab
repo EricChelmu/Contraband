@@ -651,6 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136280145677592853}
   - component: {fileID: 3170377603353891914}
+  - component: {fileID: 4482390260492764757}
   m_Layer: 0
   m_Name: LocationProvider
   m_TagString: Untagged
@@ -690,12 +691,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55f37f9a6f7e44f7bb35e6bc3863847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapManager: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
+  mapManager: {fileID: 0}
   _deviceLocationProviderUnity: {fileID: 4200427647989209508}
   _deviceLocationProviderAndroid: {fileID: 6570510984683516520}
   _editorLocationProvider: {fileID: 6570510984683516520}
   _transformLocationProvider: {fileID: 8736668152321168207}
   _dontDestroyOnLoad: 0
+--- !u!114 &4482390260492764757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5281116949788568739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b882527616c6949b3e509ce3d073a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8131002505686705679
 GameObject:
   m_ObjectHideFlags: 0
