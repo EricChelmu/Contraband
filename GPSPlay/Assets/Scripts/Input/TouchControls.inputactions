@@ -6,44 +6,64 @@
             "id": "7e6d2150-501d-4d2a-ae21-1716f5825943",
             "actions": [
                 {
-                    "name": "PrimaryTouch",
+                    "name": "PrimaryFingerStart",
                     "type": "Value",
-                    "id": "be4a5db8-b95c-4be7-a24c-584aeea222b8",
-                    "expectedControlType": "Touch",
+                    "id": "db822a39-6e72-4b6b-ae93-00f70db08b3c",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SecondaryTouch",
+                    "name": "PrimaryFingerPosition",
                     "type": "Value",
-                    "id": "bd86640c-5e14-4186-8dc8-78ea751343b7",
-                    "expectedControlType": "Touch",
+                    "id": "8c1ed7de-6400-4158-a7c4-398ac69514f0",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PrimaryFingerTap",
+                    "type": "Button",
+                    "id": "c7342bef-8531-4207-8a8e-3f865fbe8a0f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "37187ad2-3abc-4ac4-a1c5-b59cb40828a8",
-                    "path": "<Touchscreen>/touch0",
+                    "id": "f46d8dad-c21c-4cec-9e05-d2d0f192912b",
+                    "path": "<Touchscreen>/primaryTouch/startPosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrimaryTouch",
+                    "action": "PrimaryFingerStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "51dfec96-a707-4a11-a46b-fd9a05fc5c70",
-                    "path": "<Touchscreen>/touch1",
+                    "id": "a91ea738-b0d1-4ef5-a8f8-8066f43cd4c9",
+                    "path": "<Touchscreen>/touch0/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SecondaryTouch",
+                    "action": "PrimaryFingerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0d103a0-73d8-4a83-9b22-8d8b9e808886",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryFingerTap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

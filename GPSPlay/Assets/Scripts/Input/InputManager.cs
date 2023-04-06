@@ -1,6 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.UIElements;
 
 namespace InputSystem
 {
@@ -8,12 +11,13 @@ namespace InputSystem
     public class InputManager : Singleton<InputManager>
     {
         #region Events
-        public delegate void Touch(Vector2 position);
-        public event Touch OnStartPrimaryTouch;
-        public event Touch OnEndPrimaryTouch;
-        public event Touch OnStartSecondaryTouch;
-        public event Touch OnEndSecondaryTouch;
+        public delegate void CurrentPosition(Vector2 position);
+        public delegate void Touch(bool touch);
 
+        public event CurrentPosition OnPerformPrimaryFingerStart;
+        public event CurrentPosition OnPerformPrimaryFingerPosition;
+
+        public event Touch OnPerformPrimaryFingerTap;
         #endregion
 
         private TouchControls touchControls;
@@ -34,38 +38,21 @@ namespace InputSystem
         }
         private void Start()
         {
-            touchControls.Touch.PrimaryTouch.started += ctx => StartTouchPrimary(ctx);
-            touchControls.Touch.PrimaryTouch.canceled += ctx => EndTouchPrimary(ctx);
-
-            touchControls.Touch.SecondaryTouch.started += ctx => StartTouchSecondary(ctx);
-            touchControls.Touch.SecondaryTouch.canceled += ctx => EndTouchSecondary(ctx);
+            touchControls.Touch.PrimaryFingerStart.performed += ctx => PerformPrimaryFingerStart(ctx);
+            touchControls.Touch.PrimaryFingerPosition.performed += ctx => PerformPrimaryFingerPosition(ctx);
         }
-        private void StartTouchPrimary(InputAction.CallbackContext context)
+        private void PerformPrimaryFingerStart(InputAction.CallbackContext context)
         {
-            if (OnStartPrimaryTouch != null)
+            if(OnPerformPrimaryFingerStart != null)
             {
-                OnStartPrimaryTouch(Utility.ScreenToWorldPoint(mainCamera, touchControls.Touch.PrimaryTouch.ReadValue<Vector2>()));
+                OnPerformPrimaryFingerStart(touchControls.Touch.PrimaryFingerStart.ReadValue<Vector2>());
             }
         }
-        private void EndTouchPrimary(InputAction.CallbackContext context)
+        private void PerformPrimaryFingerPosition(InputAction.CallbackContext context)
         {
-            if (OnEndPrimaryTouch != null)
+            if (OnPerformPrimaryFingerPosition != null)
             {
-                OnEndPrimaryTouch(Utility.ScreenToWorldPoint(mainCamera, touchControls.Touch.PrimaryTouch.ReadValue<Vector2>()));
-            }
-        }
-        private void StartTouchSecondary(InputAction.CallbackContext context)
-        {
-            if (OnStartSecondaryTouch != null)
-            {
-                OnStartSecondaryTouch(Utility.ScreenToWorldPoint(mainCamera, touchControls.Touch.SecondaryTouch.ReadValue<Vector2>()));
-            }
-        }
-        private void EndTouchSecondary(InputAction.CallbackContext context)
-        {
-            if (OnEndSecondaryTouch != null)
-            {
-                OnEndSecondaryTouch(Utility.ScreenToWorldPoint(mainCamera, touchControls.Touch.SecondaryTouch.ReadValue<Vector2>()));
+                OnPerformPrimaryFingerPosition(touchControls.Touch.PrimaryFingerPosition.ReadValue<Vector2>());                
             }
         }
     }
