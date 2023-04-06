@@ -7,7 +7,7 @@ public class SpawnMap : MonoBehaviour
     [SerializeField]
     private GameObject mapPrefab;
 
-    private void Awake()
+    public void SpawnMaper()
     {
         Instantiate(mapPrefab);
     }
