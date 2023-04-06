@@ -9,5 +9,9 @@ namespace InputSystem
             position.z = camera.nearClipPlane;
             return camera.ScreenToWorldPoint(position);
         }
+        public static bool ScreenTouch(bool touch)
+        {
+            return touch;
+        }
     }
 }

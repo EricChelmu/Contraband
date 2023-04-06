@@ -3,78 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-namespace Multiplayer
+
+public class PlayerNetwork : NetworkBehaviour
 {
-    public class PlayerNetwork : NetworkBehaviour
+    private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
     {
-        [SerializeField] private Transform spawnedObjectPrefab;
-        private Transform spawnedObjectTransform;
+        _int = 56,
+        _bool = false,
+    }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-        private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
+    public struct MyCustomData : INetworkSerializable
+    {
+        public int _int;
+        public bool _bool;
+        public string _message;
+        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            _int = 56,
-            _bool = false,
-        }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
-        public struct MyCustomData : INetworkSerializable
-        {
-            public int _int;
-            public bool _bool;
-            public string _message;
-            public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-            {
-                serializer.SerializeValue(ref _int);
-                serializer.SerializeValue(ref _bool);
-            }
+            serializer.SerializeValue(ref _int);
+            serializer.SerializeValue(ref _bool);
         }
+    }
 
-        public override void OnNetworkSpawn()
+    public override void OnNetworkSpawn()
+    {
+        randomNumber.OnValueChanged += (MyCustomData previousValue, MyCustomData newValue) =>
         {
-            randomNumber.OnValueChanged += (MyCustomData previousValue, MyCustomData newValue) =>
+            Debug.Log(OwnerClientId + "; " + newValue._int + "; " + newValue._bool);
+        };
+    }
+    private void Update()
+    {
+        if (!IsOwner) return;
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            randomNumber.Value = new MyCustomData
             {
-                Debug.Log(OwnerClientId + "; " + newValue._int + "; " + newValue._bool);
+                _int = 10,
+                _bool = false,
             };
         }
-        private void Update()
-        {
-            if (!IsOwner) return;
 
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                spawnedObjectTransform = Instantiate(spawnedObjectPrefab);
-                spawnedObjectTransform.GetComponent<NetworkObject>().Spawn(true);
-                //TestClientRpc();
-                //randomNumber.Value = new MyCustomData
-                //{
-                //    _int = 10,
-                //    _bool = false,
-                //};
-            }
+        Vector3 moveDir = new Vector3(0, 0, 0);
 
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                Destroy(spawnedObjectTransform);
-            }
+        if (Input.GetKey(KeyCode.W)) moveDir.y = +1f;
+        if (Input.GetKey(KeyCode.A)) moveDir.x = -1f;
+        if (Input.GetKey(KeyCode.S)) moveDir.y = -1f;
+        if (Input.GetKey(KeyCode.D)) moveDir.x = +1f;
 
-            Vector3 moveDir = new Vector3(0, 0, 0);
-
-            if (Input.GetKey(KeyCode.W)) moveDir.y = +1f;
-            if (Input.GetKey(KeyCode.A)) moveDir.x = -1f;
-            if (Input.GetKey(KeyCode.S)) moveDir.y = -1f;
-            if (Input.GetKey(KeyCode.D)) moveDir.x = +1f;
-
-            float moveSpeed = 3f;
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
-        }
-        [ServerRpc]
-        private void TestServerRpc()
-        {
-            Debug.Log("TestServerRpc" + OwnerClientId);
-        }
-        [ClientRpc]
-        private void TestClientRpc()
-        {
-            Debug.Log("test client rpc");
-        }
+        float moveSpeed = 3f;
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
     }
 }
