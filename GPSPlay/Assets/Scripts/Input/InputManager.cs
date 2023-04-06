@@ -52,7 +52,7 @@ namespace InputSystem
         {
             if (OnPerformPrimaryFingerPosition != null)
             {
-                OnPerformPrimaryFingerPosition(touchControls.Touch.PrimaryFingerPosition.ReadValue<Vector2>());                
+                OnPerformPrimaryFingerPosition(touchControls.Touch.PrimaryFingerPosition.ReadValue<Vector2>());  
             }
         }
     }
