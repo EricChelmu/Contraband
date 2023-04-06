@@ -11,7 +11,7 @@ namespace Multiplayer
         private LocationProviderFactory locationProviderFactory;
         private AbstractMap map;
 
-        private void Awake()
+        private void Start()
         {
             map = GameObject.FindGameObjectWithTag("map").GetComponent<AbstractMap>();
             locationProviderFactory = GetComponent<LocationProviderFactory>();

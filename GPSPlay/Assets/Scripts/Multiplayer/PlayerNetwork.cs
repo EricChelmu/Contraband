@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Mapbox.Unity.Location;
+using Mapbox.Examples;
 
 
 public class PlayerNetwork : NetworkBehaviour
@@ -31,27 +33,35 @@ public class PlayerNetwork : NetworkBehaviour
             Debug.Log(OwnerClientId + "; " + newValue._int + "; " + newValue._bool);
         };
     }
-    private void Update()
+    bool _isInitialized;
+
+    ILocationProvider _locationProvider;
+    ILocationProvider LocationProvider
+    {
+        get
+        {
+            if (_locationProvider == null)
+            {
+                _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+            }
+
+            return _locationProvider;
+        }
+    }
+    void Start()
+    {
+        LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
+    }
+
+    void LateUpdate()
     {
         if (!IsOwner) return;
-
-        if (Input.GetKeyDown(KeyCode.T))
+        if (_isInitialized)
         {
-            randomNumber.Value = new MyCustomData
-            {
-                _int = 10,
-                _bool = false,
-            };
+            //var map = LocationProviderFactory.Instance.mapManager;
+            //transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
         }
-
-        Vector3 moveDir = new Vector3(0, 0, 0);
-
-        if (Input.GetKey(KeyCode.W)) moveDir.y = +1f;
-        if (Input.GetKey(KeyCode.A)) moveDir.x = -1f;
-        if (Input.GetKey(KeyCode.S)) moveDir.y = -1f;
-        if (Input.GetKey(KeyCode.D)) moveDir.x = +1f;
-
-        float moveSpeed = 3f;
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        var map = LocationProviderFactory.Instance.mapManager;
+        transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
     }
 }
