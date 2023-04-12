@@ -4,64 +4,67 @@ using UnityEngine;
 using Unity.Netcode;
 using Mapbox.Unity.Location;
 using Mapbox.Examples;
+using Unity.Netcode.Transports.UTP;
 
-
-public class PlayerNetwork : NetworkBehaviour
+namespace Multiplayer
 {
-    private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
+    public class PlayerNetwork : NetworkBehaviour
     {
-        _int = 56,
-        _bool = false,
-    }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
-    public struct MyCustomData : INetworkSerializable
-    {
-        public int _int;
-        public bool _bool;
-        public string _message;
-        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+        private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
         {
-            serializer.SerializeValue(ref _int);
-            serializer.SerializeValue(ref _bool);
-        }
-    }
+            _int = 56,
+            _bool = false,
+        }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    public override void OnNetworkSpawn()
-    {
-        randomNumber.OnValueChanged += (MyCustomData previousValue, MyCustomData newValue) =>
+        public struct MyCustomData : INetworkSerializable
         {
-            Debug.Log(OwnerClientId + "; " + newValue._int + "; " + newValue._bool);
-        };
-    }
-    bool _isInitialized;
-
-    ILocationProvider _locationProvider;
-    ILocationProvider LocationProvider
-    {
-        get
-        {
-            if (_locationProvider == null)
+            public int _int;
+            public bool _bool;
+            public string _message;
+            public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
             {
-                _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+                serializer.SerializeValue(ref _int);
+                serializer.SerializeValue(ref _bool);
             }
-
-            return _locationProvider;
         }
-    }
-    void Start()
-    {
-        LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
-    }
 
-    void LateUpdate()
-    {
-        if (!IsOwner) return;
-        if (_isInitialized)
+        public override void OnNetworkSpawn()
         {
-            //var map = LocationProviderFactory.Instance.mapManager;
-            //transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+            randomNumber.OnValueChanged += (MyCustomData previousValue, MyCustomData newValue) =>
+            {
+                Debug.Log(OwnerClientId + "; " + newValue._int + "; " + newValue._bool);
+            };
         }
-        var map = LocationProviderFactory.Instance.mapManager;
-        transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+        bool _isInitialized;
+
+        ILocationProvider _locationProvider;
+        ILocationProvider LocationProvider
+        {
+            get
+            {
+                if (_locationProvider == null)
+                {
+                    _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+                }
+
+                return _locationProvider;
+            }
+        }
+        void Start()
+        {
+            LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
+        }
+
+        void LateUpdate()
+        {
+            if (!IsOwner) return;
+            if (_isInitialized)
+            {
+                //var map = LocationProviderFactory.Instance.mapManager;
+                //transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+            }
+            var map = LocationProviderFactory.Instance.mapManager;
+            transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+        }
     }
 }
