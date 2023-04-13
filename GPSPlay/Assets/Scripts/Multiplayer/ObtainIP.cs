@@ -8,7 +8,7 @@ using Unity.Netcode.Transports.UTP;
 
 namespace Multiplayer
 {
-    public class MyIP : MonoBehaviour
+    public class ObtainIP : MonoBehaviour
     {
 
         public string myAddressLocal;
