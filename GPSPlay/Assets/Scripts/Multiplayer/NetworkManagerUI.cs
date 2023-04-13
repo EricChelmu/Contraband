@@ -13,6 +13,7 @@ namespace Multiplayer
         [SerializeField] private Button serverButton;
         [SerializeField] private Button hostButton;
         [SerializeField] private Button clientButton;
+        [SerializeField] private Button requestIPButton;
 
         private void Awake()
         {
@@ -26,6 +27,10 @@ namespace Multiplayer
                 NetworkManager.Singleton.StartHost();
             });
             clientButton.onClick.AddListener(() =>
+            {
+                Instantiate(requestIPButton, serverButton.transform.position, serverButton.transform.rotation);
+            });
+            requestIPButton.onClick.AddListener(() =>
             {
                 NetworkManager.Singleton.StartClient();
             });
