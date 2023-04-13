@@ -23,6 +23,7 @@ namespace Multiplayer
             IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
             foreach (IPAddress ip in hostEntry.AddressList)
             {
+                Debug.Log(ip);
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
                     myAddressLocal = ip.ToString();
@@ -53,8 +54,6 @@ namespace Multiplayer
                 Debug.Log("Likely no internet connection: " + ex.Message);
                 myAddressGlobal = "127.0.0.1";
             }
-            Debug.Log(myAddressGlobal);
-            Debug.Log(myAddressLocal);
             //GetComponent<UnityTransport>().ConnectionData.Address = myAddressLocal;
         }
     }
