@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
@@ -13,8 +14,12 @@ namespace Multiplayer
         [SerializeField] private Button serverButton;
         [SerializeField] private Button hostButton;
         [SerializeField] private Button clientButton;
-        [SerializeField] private Button requestIPButton;
+        [SerializeField] private TMP_InputField requestIPButton;
+        [SerializeField] private Button requestIPConfirmButton;
         [SerializeField] private Text _statusID;
+        [SerializeField] private TMP_Text IPText;
+        private string IPOfHost;
+
         private void Awake()
         {
             serverButton.onClick.AddListener(() =>
@@ -29,9 +34,11 @@ namespace Multiplayer
             clientButton.onClick.AddListener(() =>
             {
                 Instantiate(requestIPButton, serverButton.transform.position, serverButton.transform.rotation);
+                Instantiate(requestIPConfirmButton, hostButton.transform.position, hostButton.transform.rotation);
             });
-            requestIPButton.onClick.AddListener(() =>
+            requestIPConfirmButton.onClick.AddListener(() =>
             {
+                Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
                 NetworkManager.Singleton.StartClient();
             });
         }
@@ -39,6 +46,12 @@ namespace Multiplayer
         private void Update()
         {
             _statusID.text = Manager.GetComponent<UnityTransport>().ConnectionData.Address;
+        }
+
+        public void UpdateIP()
+        {
+            IPOfHost = IPText.text;
+            Debug.Log(IPOfHost);
         }
     }
 }
