@@ -33,12 +33,12 @@ namespace Multiplayer
             });
             clientButton.onClick.AddListener(() =>
             {
-                Instantiate(requestIPButton, serverButton.transform.position, serverButton.transform.rotation);
-                Instantiate(requestIPConfirmButton, hostButton.transform.position, hostButton.transform.rotation);
+                requestIPButton.gameObject.SetActive(true);
+                requestIPConfirmButton.gameObject.SetActive(true);
+
             });
             requestIPConfirmButton.onClick.AddListener(() =>
             {
-                Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
                 NetworkManager.Singleton.StartClient();
             });
         }
@@ -52,6 +52,7 @@ namespace Multiplayer
         {
             IPOfHost = IPText.text;
             Debug.Log(IPOfHost);
+            Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
         }
     }
 }
