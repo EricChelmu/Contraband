@@ -44,16 +44,16 @@ namespace Multiplayer
             });
         }
 
-        private void Update()
-        {
-            _statusID.text = Manager.GetComponent<UnityTransport>().ConnectionData.Address;
-        }
+        //private void Update()
+        //{
+        //    _statusID.text = Manager.GetComponent<UnityTransport>().ConnectionData.Address;
+        //}
 
-        public void UpdateIP()
-        {
-            IPOfHost = IPText.text;
-            Debug.Log(IPOfHost);
-            Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
-        }
+        //public void UpdateIP()
+        //{
+        //    IPOfHost = IPText.text;
+        //    Debug.Log(IPOfHost);
+        //    Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
+        //}
     }
 }
