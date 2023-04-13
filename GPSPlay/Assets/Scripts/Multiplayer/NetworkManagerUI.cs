@@ -28,32 +28,30 @@ namespace Multiplayer
             });
             hostButton.onClick.AddListener(() =>
             {
-                //Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
+                Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
                 NetworkManager.Singleton.StartHost();
             });
             clientButton.onClick.AddListener(() =>
             {
-                //requestIPButton.gameObject.SetActive(true);
-                //requestIPConfirmButton.gameObject.SetActive(true);
-                NetworkManager.Singleton.StartClient();
-
+                requestIPButton.gameObject.SetActive(true);
+                requestIPConfirmButton.gameObject.SetActive(true);
             });
             requestIPConfirmButton.onClick.AddListener(() =>
             {
-                //NetworkManager.Singleton.StartClient();
+                NetworkManager.Singleton.StartClient();
             });
         }
 
-        //private void Update()
-        //{
-        //    _statusID.text = Manager.GetComponent<UnityTransport>().ConnectionData.Address;
-        //}
+        private void Update()
+        {
+            _statusID.text = Manager.GetComponent<UnityTransport>().ConnectionData.Address;
+        }
 
-        //public void UpdateIP()
-        //{
-        //    IPOfHost = IPText.text;
-        //    Debug.Log(IPOfHost);
-        //    Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
-        //}
+        public void UpdateIP()
+        {
+            IPOfHost = IPText.text;
+            Debug.Log(IPOfHost);
+            Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
+        }
     }
 }
