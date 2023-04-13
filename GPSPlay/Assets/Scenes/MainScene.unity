@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d4ece6508a0484e85007e3feaf6a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 234226958}
   serverButton: {fileID: 1570211329}
   hostButton: {fileID: 1796694880}
   clientButton: {fileID: 1221669089}

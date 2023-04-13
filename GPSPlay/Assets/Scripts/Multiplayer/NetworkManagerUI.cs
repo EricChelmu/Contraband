@@ -9,7 +9,7 @@ namespace Multiplayer
 {
     public class NetworkManagerUI : MonoBehaviour
     {
-        public ObtainIP obtainIP;
+        public GameObject Manager;
         [SerializeField] private Button serverButton;
         [SerializeField] private Button hostButton;
         [SerializeField] private Button clientButton;
@@ -22,8 +22,8 @@ namespace Multiplayer
             });
             hostButton.onClick.AddListener(() =>
             {
+                Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
                 NetworkManager.Singleton.StartHost();
-                GetComponent<UnityTransport>().ConnectionData.Address = obtainIP.myAddressLocal;
             });
             clientButton.onClick.AddListener(() =>
             {

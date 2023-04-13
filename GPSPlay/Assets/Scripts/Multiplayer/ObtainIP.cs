@@ -5,17 +5,20 @@ using System.Text;
 using AddressFamily = System.Net.Sockets.AddressFamily;
 using UnityEngine;
 using Unity.Netcode.Transports.UTP;
+using InputSystem;
 
 namespace Multiplayer
 {
     public class ObtainIP : MonoBehaviour
     {
-
+        public static ObtainIP instance;
         public string myAddressLocal;
         public string myAddressGlobal;
 
         public void Awake()
         {
+            instance = this;
+
             //Get the local IP
             IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
             foreach (IPAddress ip in hostEntry.AddressList)
@@ -52,7 +55,7 @@ namespace Multiplayer
             }
             Debug.Log(myAddressGlobal);
             Debug.Log(myAddressLocal);
-            GetComponent<UnityTransport>().ConnectionData.Address = myAddressLocal;
+            //GetComponent<UnityTransport>().ConnectionData.Address = myAddressLocal;
         }
     }
 }
