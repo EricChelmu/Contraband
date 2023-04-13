@@ -14,7 +14,7 @@ namespace Multiplayer
         [SerializeField] private Button hostButton;
         [SerializeField] private Button clientButton;
         [SerializeField] private Button requestIPButton;
-
+        [SerializeField] private Text _statusID;
         private void Awake()
         {
             serverButton.onClick.AddListener(() =>
@@ -34,6 +34,11 @@ namespace Multiplayer
             {
                 NetworkManager.Singleton.StartClient();
             });
+        }
+
+        private void Update()
+        {
+            _statusID.text = Manager.GetComponent<UnityTransport>().ConnectionData.Address;
         }
     }
 }
