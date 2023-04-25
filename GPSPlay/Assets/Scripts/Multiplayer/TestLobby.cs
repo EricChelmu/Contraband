@@ -15,7 +15,9 @@ namespace Multiplayer
         [SerializeField]
         private TMPro.TMP_Text codeTextHost;
         private Lobby hostLobby;
+        private Lobby joinedLobby;
         private float heartbeatTimer;
+        private float lobbyUpdateTimer;
         private string playerName;
         private string code;
         private async void Start()
@@ -32,11 +34,12 @@ namespace Multiplayer
             playerName = "nigga" + UnityEngine.Random.Range(10, 99);
             Debug.Log(playerName);
         }
-  
+
         private void Update()
         {
             code = codeText.text;
             HandleLobbyHeartbeat();
+            HandleLobbyPollForUpdates();
             if (Input.GetKeyDown(KeyCode.C))
             {
                 CreateLobby();
@@ -54,7 +57,16 @@ namespace Multiplayer
             {
                 QuickJoinLobby();
             }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                PrintPlayers();
+            }
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                LeaveLobby();
+            }
         }
+
         private async void CreateLobby()
         {
             try
@@ -65,10 +77,16 @@ namespace Multiplayer
                 {
                     IsPrivate = false,
                     Player = GetPlayer(),
+                    Data = new Dictionary<string, DataObject>
+                    {
+                        { "GameMode", new DataObject(DataObject.VisibilityOptions.Public, "CaptureTheFlag") },
+                        { "Map", new DataObject(DataObject.VisibilityOptions.Public, "de_dust2") }
+                    }
                 };
                 Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
 
                 hostLobby = lobby;
+                joinedLobby = hostLobby;
 
                 Debug.Log("Created lobby! " + lobby.Name + " " + lobby.MaxPlayers + " " + lobby.Id + " " + lobby.LobbyCode);
 
@@ -91,7 +109,7 @@ namespace Multiplayer
                     Count = 25,
                     Filters = new List<QueryFilter>
                     {
-                        new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)
+                        new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT),
                     },
                     Order = new List<QueryOrder>
                     {
@@ -102,7 +120,7 @@ namespace Multiplayer
                 Debug.Log("Lobbies found: " + queryResponse.Results.Count);
                 foreach (Lobby lobby in queryResponse.Results)
                 {
-                    Debug.Log(lobby.Name + " " + lobby.MaxPlayers);
+                    Debug.Log(lobby.Name + " " + lobby.MaxPlayers + " " + lobby.Data["GameMode"].Value);
                 }
             }
             catch (LobbyServiceException e)
@@ -119,16 +137,17 @@ namespace Multiplayer
                 {
                     Player = GetPlayer(),
                 };
-                Lobby joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode, joinLobbyByCodeOptions);
+                Lobby lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode, joinLobbyByCodeOptions);
+                joinedLobby = lobby;
 
                 Debug.Log("Joined lobby with code " + lobbyCode);
-                PrintPlayers(joinedLobby);
+                PrintPlayers(lobby);
             }
             catch (LobbyServiceException e)
             {
                 Debug.Log(e);
             }
-            
+
         }
 
         private async void HandleLobbyHeartbeat()
@@ -142,6 +161,22 @@ namespace Multiplayer
                     heartbeatTimer = heartbeatTimerMax;
 
                     await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
+                }
+            }
+        }
+
+        private async void HandleLobbyPollForUpdates()
+        {
+            if (joinedLobby != null)
+            {
+                lobbyUpdateTimer -= Time.deltaTime;
+                if (lobbyUpdateTimer < 0f)
+                {
+                    float lobbyUpdateTimerMax = 1.1f;
+                    lobbyUpdateTimer = lobbyUpdateTimerMax;
+
+                    Lobby lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+                    joinedLobby = lobby;
                 }
             }
         }
@@ -169,14 +204,94 @@ namespace Multiplayer
             };
         }
 
+        private void PrintPlayers()
+        {
+            PrintPlayers(joinedLobby);
+        }
+
         private void PrintPlayers(Lobby lobby)
         {
-            Debug.Log("Players in lobby " + lobby.Name);
+            Debug.Log("Players in lobby " + lobby.Name + " " + lobby.Data["GameMode"].Value + " " + lobby.Data["Map"].Value);
             foreach (Player player in lobby.Players)
             {
                 Debug.Log(player.Id + " " + player.Data["PlayerName"].Value);
             }
         }
-        
+
+        private async void UpdateLobbyGameMode(string gameMode)
+        {
+            try
+            {
+                hostLobby = await Lobbies.Instance.UpdateLobbyAsync(hostLobby.Id, new UpdateLobbyOptions
+                {
+                    Data = new Dictionary<string, DataObject>
+                {
+                    {"GameMode", new DataObject(DataObject.VisibilityOptions.Public, gameMode) }
+                }
+                });
+                joinedLobby = hostLobby;
+
+                PrintPlayers(hostLobby);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
+        }
+
+        private async void UpdatePlayerName(string newPlayerName)
+        {
+            try
+            {
+                playerName = newPlayerName;
+                await LobbyService.Instance.UpdatePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId, new UpdatePlayerOptions
+                {
+                    Data = new Dictionary<string, PlayerDataObject>
+                    {
+                        { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName) }
+                    }
+                });
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
+        }
+
+        private async void LeaveLobby()
+        {
+            try
+            {
+                await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
+        }
+
+        private async void KickPlayer()
+        {
+            try
+            {
+                await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, joinedLobby.Players[1].Id);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
+        }
+
+        private async void DeleteLobby()
+        {
+            try
+            {
+                await LobbyService.Instance.DeleteLobbyAsync(joinedLobby.Id);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
+        }
     }
 }
