@@ -29,7 +29,7 @@ namespace Multiplayer
             });
             hostButton.onClick.AddListener(() =>
             {
-                //Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
+                Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
                 NetworkManager.Singleton.StartHost();
             });
             clientButton.onClick.AddListener(() =>
