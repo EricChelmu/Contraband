@@ -18,7 +18,6 @@ namespace Multiplayer
         [SerializeField] private TMP_InputField requestIPButton;
         [SerializeField] private Button requestIPConfirmButton;
         [SerializeField] private Text _statusID;
-        [SerializeField] private TMP_Text IPText;
         private string IPOfHost;
 
         private void Awake()
@@ -51,7 +50,7 @@ namespace Multiplayer
 
         //public void UpdateIP()
         //{
-        //    IPOfHost = (IPText.text);
+        //    IPOfHost = (requestIPButton.text);
         //    Debug.Log(IPOfHost);
         //    Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
         //}
