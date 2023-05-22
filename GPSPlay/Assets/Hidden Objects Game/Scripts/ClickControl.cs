@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ClickControl : MonoBehaviour
 {
+    public static string obj_name;
+    public GameObject obj_txt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,12 @@ public class ClickControl : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnMouseDown()
+    {
+        obj_name = gameObject.name;
+        Destroy(gameObject);
+        Destroy(obj_txt);
     }
 }
