@@ -2,56 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Mapbox.Unity.Location;
+using Mapbox.Examples;
+using Unity.Netcode.Transports.UTP;
 
-
-public class PlayerNetwork : NetworkBehaviour
+namespace Multiplayer
 {
-    private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
+    public class PlayerNetwork : NetworkBehaviour
     {
-        _int = 56,
-        _bool = false,
-    }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
-    public struct MyCustomData : INetworkSerializable
-    {
-        public int _int;
-        public bool _bool;
-        public string _message;
-        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+        private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
         {
-            serializer.SerializeValue(ref _int);
-            serializer.SerializeValue(ref _bool);
-        }
-    }
+            _int = 56,
+            _bool = false,
+        }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    public override void OnNetworkSpawn()
-    {
-        randomNumber.OnValueChanged += (MyCustomData previousValue, MyCustomData newValue) =>
+        public struct MyCustomData : INetworkSerializable
         {
-            Debug.Log(OwnerClientId + "; " + newValue._int + "; " + newValue._bool);
-        };
-    }
-    private void Update()
-    {
-        if (!IsOwner) return;
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            randomNumber.Value = new MyCustomData
+            public int _int;
+            public bool _bool;
+            public string _message;
+            public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
             {
-                _int = 10,
-                _bool = false,
+                serializer.SerializeValue(ref _int);
+                serializer.SerializeValue(ref _bool);
+            }
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            randomNumber.OnValueChanged += (MyCustomData previousValue, MyCustomData newValue) =>
+            {
+                Debug.Log(OwnerClientId + "; " + newValue._int + "; " + newValue._bool);
             };
         }
+        //bool _isInitialized;
 
-        Vector3 moveDir = new Vector3(0, 0, 0);
+        //ILocationProvider _locationProvider;
+        //ILocationProvider LocationProvider
+        //{
+        //    get
+        //    {
+        //        if (_locationProvider == null)
+        //        {
+        //            _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+        //        }
 
-        if (Input.GetKey(KeyCode.W)) moveDir.y = +1f;
-        if (Input.GetKey(KeyCode.A)) moveDir.x = -1f;
-        if (Input.GetKey(KeyCode.S)) moveDir.y = -1f;
-        if (Input.GetKey(KeyCode.D)) moveDir.x = +1f;
+        //        return _locationProvider;
+        //    }
+        //}
+        //void Start()
+        //{
+        //    LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
+        //}
 
-        float moveSpeed = 3f;
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        //void LateUpdate()
+        //{
+        //    if (!IsOwner) return;
+        //    if (_isInitialized)
+        //    {
+        //        //var map = LocationProviderFactory.Instance.mapManager;
+        //        //transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+        //    }
+        //    var map = LocationProviderFactory.Instance.mapManager;
+        //    transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+        //}
     }
 }

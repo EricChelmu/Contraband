@@ -58,7 +58,8 @@ namespace Mapbox.Examples
 
 		void Start()
 		{
-			LocationProvider.OnLocationUpdated += LocationProvider_OnLocationUpdated;
+            _map = GameObject.FindGameObjectWithTag("map").GetComponent<AbstractMap>(); //added
+            LocationProvider.OnLocationUpdated += LocationProvider_OnLocationUpdated;
 			_map.OnInitialized += () => _isInitialized = true;
 		}
 
