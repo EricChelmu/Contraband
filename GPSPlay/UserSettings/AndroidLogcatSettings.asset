@@ -4,7 +4,11 @@
         "deviceId": "RZCT3107BWA",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "processId": 17816,
+=======
+        "processId": 11434,
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
         "processId": 11434,
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
@@ -76,6 +80,7 @@
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 11434,
+<<<<<<< HEAD
 <<<<<<< HEAD
             "exited": false
         },
@@ -239,6 +244,8 @@
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 17816,
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
             "exited": false

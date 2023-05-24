@@ -571,6 +571,9 @@ GameObject:
   m_Name: -Manager
 =======
   m_Name: Manager
+<<<<<<< HEAD
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
+=======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,8 +716,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   myAddressLocal: 
   myAddressGlobal: 
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 --- !u!1 &338572662
@@ -1120,6 +1126,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 681042212}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!21 &559858019
 Material:
   serializedVersion: 8
@@ -1363,6 +1370,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579981906}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 --- !u!1 &691449130
@@ -2226,6 +2235,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1251001188}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1758926418
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,6 +2396,9 @@ Material:
 =======
 --- !u!1 &1345583711
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
+=======
+--- !u!1 &1345583711
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2431,6 +2444,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
   _accuracy: 1
@@ -2439,6 +2455,7 @@ MonoBehaviour:
   _sendEvent: 0
   _locationLogFile: {fileID: 4900000, guid: 5e6bb7224cef35c4788a4817b1c9778d, type: 3}
 --- !u!1 &1427711069
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   _measurements: 5
@@ -2550,6 +2567,8 @@ Material:
   m_BuildTextureStacks: []
 --- !u!1 &1867712066
 >>>>>>> parent of 92f5c16 (FollowPlayer)
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 GameObject:
@@ -3053,6 +3072,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1894796036}
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
@@ -3945,6 +3965,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2006913819}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
+=======
+  m_GameObject: {fileID: 1665862973}
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
   m_GameObject: {fileID: 1665862973}
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)

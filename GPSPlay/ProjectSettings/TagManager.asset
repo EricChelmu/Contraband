@@ -6,7 +6,10 @@ TagManager:
   tags:
   - map
 <<<<<<< HEAD
+<<<<<<< HEAD
   - ChatLog
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
   layers:
