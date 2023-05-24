@@ -46,13 +46,13 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PrimaryFingerTouch"",
-                    ""type"": ""Value"",
+                    ""name"": ""PrimaryFingerTap"",
+                    ""type"": ""Button"",
                     ""id"": ""c7342bef-8531-4207-8a8e-3f865fbe8a0f"",
-                    ""expectedControlType"": ""Touch"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -81,11 +81,11 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e0d103a0-73d8-4a83-9b22-8d8b9e808886"",
-                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PrimaryFingerTouch"",
+                    ""action"": ""PrimaryFingerTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -98,7 +98,7 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
         m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
         m_Touch_PrimaryFingerStart = m_Touch.FindAction("PrimaryFingerStart", throwIfNotFound: true);
         m_Touch_PrimaryFingerPosition = m_Touch.FindAction("PrimaryFingerPosition", throwIfNotFound: true);
-        m_Touch_PrimaryFingerTouch = m_Touch.FindAction("PrimaryFingerTouch", throwIfNotFound: true);
+        m_Touch_PrimaryFingerTap = m_Touch.FindAction("PrimaryFingerTap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,14 +162,14 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
     private List<ITouchActions> m_TouchActionsCallbackInterfaces = new List<ITouchActions>();
     private readonly InputAction m_Touch_PrimaryFingerStart;
     private readonly InputAction m_Touch_PrimaryFingerPosition;
-    private readonly InputAction m_Touch_PrimaryFingerTouch;
+    private readonly InputAction m_Touch_PrimaryFingerTap;
     public struct TouchActions
     {
         private @TouchControls m_Wrapper;
         public TouchActions(@TouchControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @PrimaryFingerStart => m_Wrapper.m_Touch_PrimaryFingerStart;
         public InputAction @PrimaryFingerPosition => m_Wrapper.m_Touch_PrimaryFingerPosition;
-        public InputAction @PrimaryFingerTouch => m_Wrapper.m_Touch_PrimaryFingerTouch;
+        public InputAction @PrimaryFingerTap => m_Wrapper.m_Touch_PrimaryFingerTap;
         public InputActionMap Get() { return m_Wrapper.m_Touch; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -185,9 +185,9 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
             @PrimaryFingerPosition.started += instance.OnPrimaryFingerPosition;
             @PrimaryFingerPosition.performed += instance.OnPrimaryFingerPosition;
             @PrimaryFingerPosition.canceled += instance.OnPrimaryFingerPosition;
-            @PrimaryFingerTouch.started += instance.OnPrimaryFingerTouch;
-            @PrimaryFingerTouch.performed += instance.OnPrimaryFingerTouch;
-            @PrimaryFingerTouch.canceled += instance.OnPrimaryFingerTouch;
+            @PrimaryFingerTap.started += instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.performed += instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.canceled += instance.OnPrimaryFingerTap;
         }
 
         private void UnregisterCallbacks(ITouchActions instance)
@@ -198,9 +198,9 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
             @PrimaryFingerPosition.started -= instance.OnPrimaryFingerPosition;
             @PrimaryFingerPosition.performed -= instance.OnPrimaryFingerPosition;
             @PrimaryFingerPosition.canceled -= instance.OnPrimaryFingerPosition;
-            @PrimaryFingerTouch.started -= instance.OnPrimaryFingerTouch;
-            @PrimaryFingerTouch.performed -= instance.OnPrimaryFingerTouch;
-            @PrimaryFingerTouch.canceled -= instance.OnPrimaryFingerTouch;
+            @PrimaryFingerTap.started -= instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.performed -= instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.canceled -= instance.OnPrimaryFingerTap;
         }
 
         public void RemoveCallbacks(ITouchActions instance)
@@ -222,6 +222,6 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
     {
         void OnPrimaryFingerStart(InputAction.CallbackContext context);
         void OnPrimaryFingerPosition(InputAction.CallbackContext context);
-        void OnPrimaryFingerTouch(InputAction.CallbackContext context);
+        void OnPrimaryFingerTap(InputAction.CallbackContext context);
     }
 }

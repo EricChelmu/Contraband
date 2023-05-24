@@ -24,13 +24,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PrimaryFingerTouch",
-                    "type": "Value",
+                    "name": "PrimaryFingerTap",
+                    "type": "Button",
                     "id": "c7342bef-8531-4207-8a8e-3f865fbe8a0f",
-                    "expectedControlType": "Touch",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -59,11 +59,11 @@
                 {
                     "name": "",
                     "id": "e0d103a0-73d8-4a83-9b22-8d8b9e808886",
-                    "path": "<Touchscreen>/primaryTouch",
+                    "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrimaryFingerTouch",
+                    "action": "PrimaryFingerTap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
