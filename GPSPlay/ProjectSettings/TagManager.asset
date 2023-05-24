@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - map
+<<<<<<< HEAD
   - ChatLog
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "RZCT3107BWA",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
+<<<<<<< HEAD
         "processId": 17816,
+=======
+        "processId": 11434,
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -72,6 +76,7 @@
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 11434,
+<<<<<<< HEAD
             "exited": false
         },
         {
@@ -234,6 +239,8 @@
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 17816,
+=======
+>>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
             "exited": false
         }
     ],
