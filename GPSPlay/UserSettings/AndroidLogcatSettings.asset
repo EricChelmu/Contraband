@@ -5,6 +5,7 @@
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "processId": 17816,
 =======
         "processId": 11434,
@@ -12,6 +13,9 @@
 =======
         "processId": 11434,
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
+=======
+        "processId": 9218,
+>>>>>>> parent of 472fa94 (revert try)
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -19,80 +23,85 @@
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.sec.android.app.launcher",
-            "processId": 2386,
+            "processId": 2701,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 16004,
+            "processId": 29891,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 17367,
+            "processId": 30363,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 18144,
+            "processId": 30760,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 19041,
+            "processId": 31138,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 20218,
+            "processId": 31698,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 22146,
+            "processId": 960,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 26152,
+            "processId": 2424,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 4425,
+            "processId": 4128,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 6379,
+            "processId": 4685,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
+<<<<<<< HEAD
             "processId": 11434,
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+            "processId": 5098,
+>>>>>>> parent of 472fa94 (revert try)
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 2058,
+            "processId": 8688,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
+<<<<<<< HEAD
             "processId": 4087,
             "exited": false
         },
@@ -248,6 +257,9 @@
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
+=======
+            "processId": 9218,
+>>>>>>> parent of 472fa94 (revert try)
             "exited": false
         }
     ],

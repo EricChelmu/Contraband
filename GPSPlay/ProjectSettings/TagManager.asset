@@ -8,10 +8,14 @@ TagManager:
 <<<<<<< HEAD
 <<<<<<< HEAD
   - ChatLog
+<<<<<<< HEAD
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
 =======
 >>>>>>> parent of b2b36f2 (Merge pull request #12 from EricChelmu/mapbox)
+=======
+  - Manager
+>>>>>>> parent of 472fa94 (revert try)
   layers:
   - Default
   - TransparentFX
