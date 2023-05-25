@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - map
-  - ChatLog
-  - Manager
   layers:
   - Default
   - TransparentFX
