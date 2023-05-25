@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Multiplayer
 {
-    public class TestLobby : MonoBehaviour
+    public class LobbyManager1 : MonoBehaviour
     {
         [SerializeField]
         private TMPro.TMP_InputField codeText;

@@ -14,13 +14,9 @@ using UnityEngine;
 
 namespace Multiplayer
 {
-    public class TestRelay : MonoBehaviour
+    public class RelayManager : MonoBehaviour
     {
-        [SerializeField]
-        private TMPro.TMP_InputField codeText;
-        [SerializeField]
-        private TMPro.TMP_Text codeTextHost;
-        private string code;
+        public static RelayManager Instance { get; private set; }
         private async void Start()
         {
             await UnityServices.InitializeAsync();
@@ -32,23 +28,12 @@ namespace Multiplayer
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
 
-        private void Update()
+        private void Awake()
         {
-            code = codeText.text;
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                CreateRelay();
-            }
-
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-
-                JoinRelay(code);
-            }
+            Instance = this;
         }
 
-        private async void CreateRelay()
+        public async void CreateRelay()
         {
             try
             {
@@ -56,15 +41,19 @@ namespace Multiplayer
 
                 string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
-                Debug.Log(joinCode);
-
                 RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
 
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
                 NetworkManager.Singleton.StartHost();
 
-                codeTextHost.text = joinCode;
+                NetworkManagerUI.Instance.codeTextHost.text = joinCode;
+
+                NetworkManagerUI.Instance.hostButton.gameObject.SetActive(false);
+                NetworkManagerUI.Instance.joinButton.gameObject.SetActive(false);
+                NetworkManagerUI.Instance.yourCodeIsButton.gameObject.SetActive(true);
+                NetworkManagerUI.Instance.codeTextHost.gameObject.SetActive(true);
+                NetworkManagerUI.Instance.startGameButton.gameObject.SetActive(true);
             }
             catch (RelayServiceException e)
             {
@@ -72,7 +61,7 @@ namespace Multiplayer
             }
         }
 
-        private async void JoinRelay(string joinCode)
+        public async void JoinRelay(string joinCode)
         {
             try
             {
