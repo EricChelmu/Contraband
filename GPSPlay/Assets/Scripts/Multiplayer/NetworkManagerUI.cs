@@ -11,75 +11,37 @@ namespace Multiplayer
 {
     public class NetworkManagerUI : MonoBehaviour
     {
-        public static NetworkManagerUI Instance;
         public GameObject Manager;
-        public Button hostButton;
-        public Button joinButton;
-        public TMP_InputField codeInputField;
-        public TMP_Text yourCodeIsButton;
-        public TMP_Text codeTextHost;
-        public Button startGameButton;
-        public Button joinGameButton;
-        public GameObject background;
-        public GameObject title;
-        private string code;
+        [SerializeField] private Button serverButton;
+        [SerializeField] private Button hostButton;
+        [SerializeField] private Button clientButton;
+        [SerializeField] private TMP_InputField requestIPButton;
+        [SerializeField] private Button requestIPConfirmButton;
+        [SerializeField] private Text _statusID;
+        [SerializeField] private TMP_Text IPText;
+        private string IPOfHost;
+
         private void Awake()
         {
-            Instance = this;
-
+            serverButton.onClick.AddListener(() =>
+            {
+                NetworkManager.Singleton.StartServer();
+            });
             hostButton.onClick.AddListener(() =>
             {
-                RelayManager.Instance.CreateRelay();
+                Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
+                NetworkManager.Singleton.StartHost();
             });
-
-            joinButton.onClick.AddListener(() =>
+            clientButton.onClick.AddListener(() =>
             {
-                OpenInputField();
+                //requestIPButton.gameObject.SetActive(true);
+                //requestIPConfirmButton.gameObject.SetActive(true);
+                NetworkManager.Singleton.StartClient();
             });
-
-            joinGameButton.onClick.AddListener(() =>
-            {
-                RelayManager.Instance.JoinRelay(code);
-            });
-
-            startGameButton.onClick.AddListener(() =>
-            {
-                hostButton.gameObject.SetActive(false);
-                joinButton.gameObject.SetActive(false);
-                startGameButton.gameObject.SetActive(false);
-                yourCodeIsButton.gameObject.SetActive(false);
-                codeTextHost.gameObject.SetActive(false);
-                background.gameObject.SetActive(false);
-                title.gameObject.SetActive(false);
-            });
-            //hostButton.onClick.AddListener(() =>
-            //{
-            //    //Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
-            //    NetworkManager.Singleton.StartHost();
-            //});
-            //clientButton.onClick.AddListener(() =>
-            //{
-            //    //requestIPButton.gameObject.SetActive(true);
-            //    //requestIPConfirmButton.gameObject.SetActive(true);
-            //    NetworkManager.Singleton.StartClient();
-            //});
             //requestIPConfirmButton.onClick.AddListener(() =>
             //{
             //    NetworkManager.Singleton.StartClient();
             //});
-        }
-
-        private void Update()
-        {
-            code = codeInputField.text;
-        }
-
-        private void OpenInputField()
-        {
-            hostButton.gameObject.SetActive(false);
-            joinButton.gameObject.SetActive(false);
-            codeInputField.gameObject.SetActive(true);
-            joinGameButton.gameObject.SetActive(true);
         }
 
         //private void Update()
@@ -89,7 +51,7 @@ namespace Multiplayer
 
         //public void UpdateIP()
         //{
-        //    IPOfHost = (requestIPButton.text);
+        //    IPOfHost = (IPText.text);
         //    Debug.Log(IPOfHost);
         //    Manager.GetComponent<UnityTransport>().ConnectionData.Address = IPOfHost;
         //}
