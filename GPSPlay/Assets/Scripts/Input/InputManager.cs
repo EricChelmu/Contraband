@@ -12,21 +12,20 @@ namespace InputSystem
     {
         #region Events
         public delegate void CurrentPosition(Vector2 position);
-        public delegate void Touch(bool touch);
+        public delegate void Contact(Touch touch);
 
         public event CurrentPosition OnPerformPrimaryFingerStart;
         public event CurrentPosition OnPerformPrimaryFingerPosition;
+        public event CurrentPosition OnEndPrimaryFingerPosition;
 
-        public event Touch OnPerformPrimaryFingerTap;
+        public event Contact OnPerformPrimaryFingerTouch;
         #endregion
 
         private TouchControls touchControls;
-        private Camera mainCamera;
 
         private void Awake()
         {
             touchControls = new TouchControls();
-            mainCamera = Camera.main;
         }
         private void OnEnable()
         {
@@ -40,6 +39,7 @@ namespace InputSystem
         {
             touchControls.Touch.PrimaryFingerStart.performed += ctx => PerformPrimaryFingerStart(ctx);
             touchControls.Touch.PrimaryFingerPosition.performed += ctx => PerformPrimaryFingerPosition(ctx);
+            touchControls.Touch.PrimaryFingerPosition.canceled += ctx => EndPrimaryFingerPosition(ctx);
         }
         private void PerformPrimaryFingerStart(InputAction.CallbackContext context)
         {
@@ -50,9 +50,16 @@ namespace InputSystem
         }
         private void PerformPrimaryFingerPosition(InputAction.CallbackContext context)
         {
-            if (OnPerformPrimaryFingerPosition != null)
+            if(OnPerformPrimaryFingerPosition != null)
             {
                 OnPerformPrimaryFingerPosition(touchControls.Touch.PrimaryFingerPosition.ReadValue<Vector2>());  
+            }
+        }
+        private void EndPrimaryFingerPosition(InputAction.CallbackContext context)
+        {
+            if(OnEndPrimaryFingerPosition != null)
+            {
+                OnEndPrimaryFingerPosition(touchControls.Touch.PrimaryFingerPosition.ReadValue<Vector2>());
             }
         }
     }
