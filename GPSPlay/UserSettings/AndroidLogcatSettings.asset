@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RZCT3107BWA",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 9218,
+        "processId": 11434,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,79 +11,67 @@
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.sec.android.app.launcher",
-            "processId": 2701,
+            "processId": 2386,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 29891,
+            "processId": 16004,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 30363,
+            "processId": 17367,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 30760,
+            "processId": 18144,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 31138,
+            "processId": 19041,
             "exited": true
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 31698,
+            "processId": 20218,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 960,
+            "processId": 22146,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 2424,
+            "processId": 26152,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 4128,
+            "processId": 4425,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 4685,
+            "processId": 6379,
             "exited": false
         },
         {
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 5098,
-            "exited": false
-        },
-        {
-            "deviceId": "RZCT3107BWA",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 8688,
-            "exited": false
-        },
-        {
-            "deviceId": "RZCT3107BWA",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 9218,
+            "processId": 11434,
             "exited": false
         }
     ],
