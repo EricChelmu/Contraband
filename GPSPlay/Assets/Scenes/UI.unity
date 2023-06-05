@@ -885,7 +885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'B _ _ _ '
+  m_text: 'D _ _ '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d69687edf8b844a4b96c2cbe36634644, type: 2}
   m_sharedMaterial: {fileID: -1171642219913117007, guid: d69687edf8b844a4b96c2cbe36634644, type: 2}
@@ -1120,7 +1120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 923519775326601581, guid: b3072f3bd559f8a48b1dc18ff544a330, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4606958145919198759, guid: b3072f3bd559f8a48b1dc18ff544a330, type: 3}
       propertyPath: m_Pivot.x
@@ -1848,7 +1848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7300207106514051453, guid: 9b48c5775ec7d43438371279e121ef90, type: 3}
       propertyPath: m_text
-      value: "A title of respect, \nlike a don or chief select."
+      value: "A title of respect, \nlike a boss or chief select."
       objectReference: {fileID: 0}
     - target: {fileID: 7300207106514051453, guid: 9b48c5775ec7d43438371279e121ef90, type: 3}
       propertyPath: m_fontSize
@@ -1944,7 +1944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555885707557512139, guid: 9b48c5775ec7d43438371279e121ef90, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b48c5775ec7d43438371279e121ef90, type: 3}
@@ -3229,7 +3229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555885707557512139, guid: 9b48c5775ec7d43438371279e121ef90, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b48c5775ec7d43438371279e121ef90, type: 3}
