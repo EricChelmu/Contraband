@@ -8,17 +8,20 @@ namespace InputSystem
 {
     public class CameraControls : MonoBehaviour
     {
+        //basic
         private InputManager inputManager;
-        private Camera mainCamera;
+        public Transform player;
         //private Vector3 spawnLocation;
 
+        //follow player
+        private float smoothTime = 0.25f;
+        private Vector3 velocity = Vector3.zero;
+
+        //finger movement
         private Vector2 startPosition;
-        private Vector2 endPosition;
-        //private float startTime;
-
         private Vector2 currentPosition;
-        //private float currentTime;
 
+        //camera movement
         private Vector3 direction;
         private float minimumDistance;
         private float speed;
@@ -27,7 +30,6 @@ namespace InputSystem
         private void Awake()
         {
             inputManager = InputManager.Instance;
-            mainCamera = GetComponent<Camera>();
             //spawnLocation = transform.position;
         }
         private void OnEnable()
@@ -52,18 +54,19 @@ namespace InputSystem
             speed = (currentPosition - startPosition).magnitude * Time.deltaTime;
             
             transform.Translate(-direction * 2 * speed, Space.World);
-            //SlideCamera();
             MoveStart(currentPosition);            
         }
-        private void SlideCamera()
+        private void FollowPlayer()
         {
-            minimumDistance = .2f;
-                for(float i = speed; i > 0;)
-                {
-                    transform.Translate(-direction * i, Space.World);
-                    i /= 1/speed;
-                }
-            
+            if (player != null && Input.touchCount == 0)
+            {
+                Vector3 playerPosition = new Vector3(player.position.x, transform.position.y, player.position.z - 67.3f);
+                transform.position = Vector3.SmoothDamp(transform.position, playerPosition, ref velocity, smoothTime);
+            }
+        }
+        private void Update()
+        {
+            FollowPlayer();
         }
     }
 }

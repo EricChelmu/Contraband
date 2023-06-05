@@ -593,7 +593,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 145.25.25.124
+    Address: 10.52.72.49
     Port: 7777
     ServerListenAddress: 
   DebugSimulator:
@@ -3019,6 +3019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae275e22bfa0be46a942c00621563b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!81 &1894796038
 AudioListener:
   m_ObjectHideFlags: 0
