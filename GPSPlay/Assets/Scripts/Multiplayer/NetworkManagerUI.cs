@@ -11,6 +11,7 @@ namespace Multiplayer
 {
     public class NetworkManagerUI : MonoBehaviour
     {
+        //gathering references
         public static NetworkManagerUI Instance;
         public GameObject Manager;
         public Button hostButton;
@@ -27,8 +28,10 @@ namespace Multiplayer
         {
             Instance = this;
 
+            //turning off the UI upon starting the game by pressing "host"
             hostButton.onClick.AddListener(() =>
             {
+                //relay is created
                 //RelayManager.Instance.CreateRelay();
                 codeInputField.gameObject.SetActive(false);
                 joinGameButton.gameObject.SetActive(false);
@@ -42,17 +45,20 @@ namespace Multiplayer
                 NetworkManager.Singleton.StartHost();
             });
 
+            //joining as client
             joinButton.onClick.AddListener(() =>
             {
                 OpenInputField();
                 NetworkManager.Singleton.StartClient();
             });
 
+            //joining through relay
             joinGameButton.onClick.AddListener(() =>
             {
                 //RelayManager.Instance.JoinRelay(code);
             });
 
+            //unused ui features, that have been temporarily removed because of mapbox bug
             startGameButton.onClick.AddListener(() =>
             {
                 hostButton.gameObject.SetActive(false);
@@ -63,6 +69,9 @@ namespace Multiplayer
                 background.gameObject.SetActive(false);
                 title.gameObject.SetActive(false);
             });
+
+            //SCRAPPED SEGMENT, HAS BEEN UPDATED TO BE MORE EFFICIENT WITH RELAY AND LOBBY
+
             //hostButton.onClick.AddListener(() =>
             //{
             //    //Manager.GetComponent<UnityTransport>().ConnectionData.Address = ObtainIP.instance.myAddressLocal;
@@ -80,6 +89,7 @@ namespace Multiplayer
             //});
         }
 
+        //take input from players
         private void Update()
         {
             code = codeInputField.text;
@@ -97,6 +107,8 @@ namespace Multiplayer
             background.gameObject.SetActive(false);
             title.gameObject.SetActive(false);
         }
+
+        //scrapped automatic IP updating, better version being used with relay and lobby
 
         //private void Update()
         //{

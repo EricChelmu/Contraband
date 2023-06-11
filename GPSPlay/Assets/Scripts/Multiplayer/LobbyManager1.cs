@@ -24,6 +24,7 @@ namespace Multiplayer
         {
             await UnityServices.InitializeAsync();
 
+            //authenticate the player with unity ID
             AuthenticationService.Instance.SignedIn += () =>
             {
                 Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
@@ -31,12 +32,13 @@ namespace Multiplayer
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-            playerName = "nigga" + UnityEngine.Random.Range(10, 99);
+            playerName = "player" + UnityEngine.Random.Range(10, 99);
             Debug.Log(playerName);
         }
 
         private void Update()
         {
+            //testing connection through hotkeys ingame
             code = codeText.text;
             HandleLobbyHeartbeat();
             HandleLobbyPollForUpdates();
@@ -67,6 +69,7 @@ namespace Multiplayer
             }
         }
 
+        //creating lobby with custom options and data like map and gamemode as an example
         private async void CreateLobby()
         {
             try
@@ -100,6 +103,7 @@ namespace Multiplayer
             }
         }
 
+        //listing lobbies based on custom search
         private async void ListLobbies()
         {
             try
@@ -150,6 +154,8 @@ namespace Multiplayer
 
         }
 
+        //lobby heartbeat so that the lobby doesnt shut down automatically if no player joins within 15 seconds
+        //the shutdown is the default setting for the lobby service
         private async void HandleLobbyHeartbeat()
         {
             if (hostLobby != null)
@@ -165,6 +171,7 @@ namespace Multiplayer
             }
         }
 
+        //clients request an update from the host lobby every second
         private async void HandleLobbyPollForUpdates()
         {
             if (joinedLobby != null)
@@ -181,6 +188,7 @@ namespace Multiplayer
             }
         }
 
+        //quick join any open lobby
         private async void QuickJoinLobby()
         {
             try
@@ -193,6 +201,7 @@ namespace Multiplayer
             }
         }
 
+        //obtaining player name
         private Player GetPlayer()
         {
             return new Player

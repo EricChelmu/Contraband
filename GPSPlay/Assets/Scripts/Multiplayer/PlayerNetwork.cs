@@ -10,12 +10,14 @@ namespace Multiplayer
 {
     public class PlayerNetwork : NetworkBehaviour
     {
+        //assigning random number to player on joining
         private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
         {
             _int = 56,
             _bool = false,
         }, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+        //constructor for custom data for player upon joining
         public struct MyCustomData : INetworkSerializable
         {
             public int _int;
@@ -28,6 +30,7 @@ namespace Multiplayer
             }
         }
 
+        //display the data on screen
         public override void OnNetworkSpawn()
         {
             randomNumber.OnValueChanged += (MyCustomData previousValue, MyCustomData newValue) =>

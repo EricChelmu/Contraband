@@ -17,6 +17,8 @@ namespace Multiplayer
     public class RelayManager : MonoBehaviour
     {
         public static RelayManager Instance { get; private set; }
+
+        //authorizing player
         private async void Start()
         {
             await UnityServices.InitializeAsync();
@@ -37,18 +39,22 @@ namespace Multiplayer
         {
             try
             {
+                //allocating relay to best location, example eu-west4
                 Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
 
+                //code that players use to join the relay
                 string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
                 RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
 
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
+                //starting the relay and server
                 NetworkManager.Singleton.StartHost();
 
                 NetworkManagerUI.Instance.codeTextHost.text = joinCode;
 
+                //changing ui
                 NetworkManagerUI.Instance.hostButton.gameObject.SetActive(false);
                 NetworkManagerUI.Instance.joinButton.gameObject.SetActive(false);
                 NetworkManagerUI.Instance.yourCodeIsButton.gameObject.SetActive(true);
@@ -61,6 +67,7 @@ namespace Multiplayer
             }
         }
 
+        //joining server with code
         public async void JoinRelay(string joinCode)
         {
             try
