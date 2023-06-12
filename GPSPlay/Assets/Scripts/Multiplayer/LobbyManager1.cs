@@ -31,7 +31,7 @@ namespace Multiplayer
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-            playerName = "nigga" + UnityEngine.Random.Range(10, 99);
+            playerName = "player" + UnityEngine.Random.Range(10, 99);
             Debug.Log(playerName);
         }
 

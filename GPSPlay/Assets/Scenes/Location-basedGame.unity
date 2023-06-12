@@ -594,7 +594,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 145.25.25.124
+    Address: 100.89.33.176
     Port: 7777
     ServerListenAddress: 
   DebugSimulator:
@@ -3042,7 +3042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae275e22bfa0be46a942c00621563b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!81 &1894796038
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3357,7 +3356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].findByType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].presetFeatureType
@@ -3376,8 +3375,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
+      propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].coordinates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].coreOptions.sublayerName
       value: New Location
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
+      propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].coordinates.Array.data[0]
+      value: 53.213364, 6.535814
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].coreOptions.snapToTerrain
@@ -3386,7 +3393,7 @@ PrefabInstance:
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].spawnPrefabOptions.prefab
       value: 
-      objectReference: {fileID: 1064074361305596, guid: 748e2c1db1257594bb438fbb7bd185f0, type: 3}
+      objectReference: {fileID: 3656622376253121159, guid: aa90cfafbbec15a4e990c56628dc8a29, type: 3}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[0].filterOptions.combinerType
       value: 1
@@ -3658,7 +3665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00048828125, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.00048828125, y: 0}
   m_SizeDelta: {x: 0.00061035156, y: 0.000061035156}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2108233815

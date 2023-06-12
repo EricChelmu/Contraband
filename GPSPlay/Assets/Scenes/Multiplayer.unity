@@ -1103,12 +1103,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  serverButton: {fileID: 184419341}
   hostButton: {fileID: 1956581431}
-  clientButton: {fileID: 820594708}
-  requestIPButton: {fileID: 0}
-  requestIPConfirmButton: {fileID: 0}
-  _statusID: {fileID: 0}
+  joinButton: {fileID: 0}
+  codeInputField: {fileID: 0}
+  yourCodeIsButton: {fileID: 0}
+  codeTextHost: {fileID: 0}
+  startGameButton: {fileID: 0}
+  joinGameButton: {fileID: 0}
+  background: {fileID: 0}
+  title: {fileID: 0}
 --- !u!1 &820594706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,8 +1876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b42add3049a9042ba58414782b9be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codeText: {fileID: 405923879}
-  codeTextHost: {fileID: 276247257}
 --- !u!1 &1956581429
 GameObject:
   m_ObjectHideFlags: 0

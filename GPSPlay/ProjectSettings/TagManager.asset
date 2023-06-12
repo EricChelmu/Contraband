@@ -6,6 +6,7 @@ TagManager:
   tags:
   - map
   - Manager
+  - ChatLog
   layers:
   - Default
   - TransparentFX

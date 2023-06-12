@@ -1,5 +1,8 @@
+using GamePlay;
+using Multiplayer;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,7 +13,8 @@ namespace InputSystem
     {
         //basic
         private InputManager inputManager;
-        public Transform player;
+        private GameManager gameManager;
+        private Transform player;
         //private Vector3 spawnLocation;
 
         //follow player
@@ -30,6 +34,7 @@ namespace InputSystem
         private void Awake()
         {
             inputManager = InputManager.Instance;
+            gameManager = GameManager.Instance;
             //spawnLocation = transform.position;
         }
         private void OnEnable()
@@ -58,6 +63,12 @@ namespace InputSystem
         }
         private void FollowPlayer()
         {
+            if(gameManager.CheckLocalPlayer() != null)
+            {
+                player = gameManager.CheckLocalPlayer().transform;
+                bool isMole = gameManager.CheckLocalPlayer().GetComponent<PlayerNetwork>().isMole;
+            }            
+
             if (player != null && Input.touchCount == 0)
             {
                 Vector3 playerPosition = new Vector3(player.position.x, transform.position.y, player.position.z - 67.3f);

@@ -11,9 +11,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Multiplayer.unity
     guid: f06770a5a91cf324fbb21612d03f08d9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Location-basedGame.unity
     guid: f8c022ba2b978234f93d1a1e09236dad
+  - enabled: 0
+    path: Assets/Scenes/UI.unity
+    guid: 2113e133dd5a54e40be5181657b26e93
+  - enabled: 0
+    path: Assets/Scenes/FindDifferences.unity
+    guid: bc93060741b473e4d9bd5677bfe34334
   m_configObjects:
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: db520319c2bc6824aa4c4faf6602e4f7, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: c08b0ad73852fbb4ea1b1fe5827ffb9f, type: 2}

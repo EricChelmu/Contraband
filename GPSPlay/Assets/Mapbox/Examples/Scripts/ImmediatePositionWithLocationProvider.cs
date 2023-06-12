@@ -1,8 +1,9 @@
 ﻿namespace Mapbox.Examples
 {
 	using Mapbox.Unity.Location;
-	using Mapbox.Unity.Map;
-	using UnityEngine;
+    using Mapbox.Unity.Map;
+    using TMPro;
+    using UnityEngine;
 
 	public class ImmediatePositionWithLocationProvider : MonoBehaviour
 	{
@@ -37,6 +38,6 @@
 				var map = LocationProviderFactory.Instance.mapManager;
 				transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
 			}
-		}
+        }
 	}
 }

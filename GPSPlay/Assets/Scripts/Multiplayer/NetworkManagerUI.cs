@@ -1,9 +1,11 @@
+using GamePlay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
+using Unity.Services.Lobbies;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,13 +41,15 @@ namespace Multiplayer
                 codeTextHost.gameObject.SetActive(false);
                 background.gameObject.SetActive(false);
                 title.gameObject.SetActive(false);
+
                 NetworkManager.Singleton.StartHost();
+                //NetworkManager.Singleton.StartServer();
             });
 
             joinButton.onClick.AddListener(() =>
             {
-                OpenInputField();
-                NetworkManager.Singleton.StartClient();
+                OpenInputField();                
+                NetworkManager.Singleton.StartClient();                
             });
 
             joinGameButton.onClick.AddListener(() =>
