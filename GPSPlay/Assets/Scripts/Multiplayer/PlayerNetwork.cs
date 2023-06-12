@@ -134,36 +134,36 @@ namespace Multiplayer
         }
         
 
-        //bool _isInitialized;
+        bool _isInitialized;
 
-        //ILocationProvider _locationProvider;
-        //ILocationProvider LocationProvider
-        //{
-        //    get
-        //    {
-        //        if (_locationProvider == null)
-        //        {
-        //            _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
-        //        }
+        ILocationProvider _locationProvider;
+        ILocationProvider LocationProvider
+        {
+            get
+            {
+                if (_locationProvider == null)
+                {
+                    _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider;
+                }
 
-        //        return _locationProvider;
-        //    }
-        //}
-        //void Start()
-        //{
-        //    LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
-        //}
+                return _locationProvider;
+            }
+        }
+        void Start()
+        {
+            LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
+        }
 
-        //void LateUpdate()
-        //{
-        //    if (!IsOwner) return;
-        //    if (_isInitialized)
-        //    {
-        //        //var map = LocationProviderFactory.Instance.mapManager;
-        //        //transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
-        //    }
-        //    var map = LocationProviderFactory.Instance.mapManager;
-        //    transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
-        //}
+        void LateUpdate()
+        {
+            if (!IsOwner) return;
+            //if (_isInitialized)
+            //{
+            //    var map = LocationProviderFactory.Instance.mapManager;
+            //    transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+            //}
+            var map = LocationProviderFactory.Instance.mapManager;
+            transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
+        }
     }
 }
