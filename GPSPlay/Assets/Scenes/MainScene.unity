@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d557417079b1446999d2d86ff71dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updateDistanceInMeters: 0
+  _updateDistanceInMeters: 0.5
   _updateTimeInMilliSeconds: 500
 --- !u!4 &338572664
 Transform:
@@ -2562,7 +2562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a38712e93231418a84665190b8473d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _desiredAccuracyInMeters: 5
+  _desiredAccuracyInMeters: 1
   _updateDistanceInMeters: 5
   _updateTimeInMilliSeconds: 1000
   _userHeadingSmoothing: {fileID: 0}

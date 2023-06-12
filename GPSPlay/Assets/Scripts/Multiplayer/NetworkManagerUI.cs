@@ -53,6 +53,15 @@ namespace Multiplayer
             joinGameButton.onClick.AddListener(() =>
             {
                 RelayManager.Instance.JoinRelay(code);
+                hostButton.gameObject.SetActive(false);
+                joinButton.gameObject.SetActive(false);
+                startGameButton.gameObject.SetActive(false);
+                yourCodeIsButton.gameObject.SetActive(false);
+                codeTextHost.gameObject.SetActive(false);
+                background.gameObject.SetActive(false);
+                title.gameObject.SetActive(false);
+                codeInputField.gameObject.SetActive(false);
+                joinGameButton.gameObject.SetActive(false);
             });
 
             startGameButton.onClick.AddListener(() =>
