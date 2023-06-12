@@ -45,7 +45,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 769933716362531296}
-  - component: {fileID: 582260184686402041}
   m_Layer: 0
   m_Name: Russia
   m_TagString: Untagged
@@ -70,20 +69,6 @@ Transform:
   m_Father: {fileID: 315524393530350452}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &582260184686402041
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136385682985896794}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &160340987652189203
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +300,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 917666338790551806}
-  - component: {fileID: 8677900897614329764}
   m_Layer: 0
   m_Name: Italy
   m_TagString: Untagged
@@ -340,20 +324,6 @@ Transform:
   m_Father: {fileID: 315524393530350452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8677900897614329764
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574178169574255172}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &604553481942529038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,7 +2382,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5670603428905780294}
-  - component: {fileID: 1014422657820372368}
   m_Layer: 0
   m_Name: England
   m_TagString: Untagged
@@ -2437,20 +2406,6 @@ Transform:
   m_Father: {fileID: 315524393530350452}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1014422657820372368
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5042298111720611580}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5111296890079042764
 GameObject:
   m_ObjectHideFlags: 0
