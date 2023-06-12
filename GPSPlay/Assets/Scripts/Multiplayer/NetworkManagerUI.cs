@@ -31,30 +31,28 @@ namespace Multiplayer
 
             hostButton.onClick.AddListener(() =>
             {
-                //RelayManager.Instance.CreateRelay();
+                RelayManager.Instance.CreateRelay();
                 codeInputField.gameObject.SetActive(false);
                 joinGameButton.gameObject.SetActive(false);
                 hostButton.gameObject.SetActive(false);
                 joinButton.gameObject.SetActive(false);
-                startGameButton.gameObject.SetActive(false);
-                yourCodeIsButton.gameObject.SetActive(false);
-                codeTextHost.gameObject.SetActive(false);
-                background.gameObject.SetActive(false);
-                title.gameObject.SetActive(false);
+                startGameButton.gameObject.SetActive(true);
+                yourCodeIsButton.gameObject.SetActive(true);
+                codeTextHost.gameObject.SetActive(true);
 
-                NetworkManager.Singleton.StartHost();
+                //NetworkManager.Singleton.StartHost();
                 //NetworkManager.Singleton.StartServer();
             });
 
             joinButton.onClick.AddListener(() =>
             {
                 OpenInputField();                
-                NetworkManager.Singleton.StartClient();                
+                //NetworkManager.Singleton.StartClient();                
             });
 
             joinGameButton.onClick.AddListener(() =>
             {
-                //RelayManager.Instance.JoinRelay(code);
+                RelayManager.Instance.JoinRelay(code);
             });
 
             startGameButton.onClick.AddListener(() =>
@@ -91,15 +89,13 @@ namespace Multiplayer
 
         private void OpenInputField()
         {
-            codeInputField.gameObject.SetActive(false);
-            joinGameButton.gameObject.SetActive(false);
+            codeInputField.gameObject.SetActive(true);
+            joinGameButton.gameObject.SetActive(true);
             hostButton.gameObject.SetActive(false);
             joinButton.gameObject.SetActive(false);
             startGameButton.gameObject.SetActive(false);
             yourCodeIsButton.gameObject.SetActive(false);
             codeTextHost.gameObject.SetActive(false);
-            background.gameObject.SetActive(false);
-            title.gameObject.SetActive(false);
         }
 
         //private void Update()
