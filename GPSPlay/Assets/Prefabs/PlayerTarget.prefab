@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _map: {fileID: 0}
-  _positionFollowFactor: 2
+  _positionFollowFactor: 100
   _useTransformLocationProvider: 0
 --- !u!1 &745049138600028790
 GameObject:

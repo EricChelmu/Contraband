@@ -21,5 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FindDifferences.unity
     guid: bc93060741b473e4d9bd5677bfe34334
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: be1d2ba85907dce4ca4d8af7852809eb, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: db520319c2bc6824aa4c4faf6602e4f7, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: c08b0ad73852fbb4ea1b1fe5827ffb9f, type: 2}

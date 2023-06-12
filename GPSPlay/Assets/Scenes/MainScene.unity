@@ -2503,7 +2503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &338572663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d557417079b1446999d2d86ff71dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updateDistanceInMeters: 0.5
+  _updateDistanceInMeters: 0
   _updateTimeInMilliSeconds: 500
 --- !u!4 &338572664
 Transform:
@@ -2562,11 +2562,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a38712e93231418a84665190b8473d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _desiredAccuracyInMeters: 1
-  _updateDistanceInMeters: 0.5
-  _updateTimeInMilliSeconds: 500
-  _userHeadingSmoothing: {fileID: 1453483638}
-  _deviceOrientationSmoothing: {fileID: 1041276758}
+  _desiredAccuracyInMeters: 5
+  _updateDistanceInMeters: 5
+  _updateTimeInMilliSeconds: 1000
+  _userHeadingSmoothing: {fileID: 0}
+  _deviceOrientationSmoothing: {fileID: 0}
   _editorDebuggingOnly:
     _mockUnityInputLocation: 1
     _locationLogFile: {fileID: 4900000, guid: 5e6bb7224cef35c4788a4817b1c9778d, type: 3}
@@ -3407,8 +3407,10 @@ MonoBehaviour:
   _updateInterval: 1
   _sendEvent: 0
   _latitudeLongitude:
-  - 31.8039734986915, -98.8223185136653
-  _heading: 112
+  - 53.23883225, 6.53651775
+  - 53.21086784628122, 6.557085741872588
+  - 53.245240434417816, 6.5352106435030715
+  _heading: 0
 --- !u!1 &700382919
 GameObject:
   m_ObjectHideFlags: 0
@@ -8409,16 +8411,8 @@ PrefabInstance:
       value: 53.23883225, 6.53651775
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
-      propertyPath: _terrain._layerProperty.elevationLayerType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.useOptimizedStyle
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
-      propertyPath: _imagery._layerProperty.rasterOptions.useMipMap
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _imagery._layerProperty.rasterOptions.useRetina
@@ -8429,12 +8423,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
-      propertyPath: _imagery._layerProperty.rasterOptions.useCompression
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _imagery._layerProperty.sourceOptions.layerSource.Id
       value: mapbox://styles/milan1466/clgui5b0s004y01pn1s6zcsim
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
+      propertyPath: _imagery._layerProperty.sourceOptions.layerSource.Name
+      value: Dark
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.sourceOptions.layerSource.Id
@@ -8443,10 +8437,6 @@ PrefabInstance:
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
-      propertyPath: _terrain._layerProperty.requiredOptions.exaggerationFactor
-      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 9090700810902112249, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
       propertyPath: _options.extentOptions.defaultExtents.cameraBoundsOptions.camera
@@ -8656,8 +8646,7 @@ PrefabInstance:
       propertyPath: _vectorData._layerProperty.locationPrefabList.Array.data[1].performanceOptions.entityPerCoroutine
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2289164869670304866, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66898e5f97203844885e815f4bb9337f, type: 3}
 --- !u!114 &2006913820 stripped
 MonoBehaviour:

@@ -1,4 +1,5 @@
 using InputSystem;
+using Mapbox.Unity.Location;
 using Multiplayer;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,6 +61,11 @@ namespace GamePlay
                 }
             }
             return null;
+        }
+
+        private void Update()
+        {
+            //Debug.Log(LocationProviderFactory.Instance.DefaultLocationProvider.CurrentLocation.LatitudeLongitude.ToString());
         }
 
     }

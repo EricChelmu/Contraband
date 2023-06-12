@@ -10,7 +10,10 @@
 
 		bool _isInitialized;
 
-		ILocationProvider _locationProvider;
+		LocationProviderFactory locationProviderFactory;
+		AbstractMap map;
+
+        ILocationProvider _locationProvider;
 		ILocationProvider LocationProvider
 		{
 			get
@@ -29,13 +32,16 @@
 		void Start()
 		{
 			LocationProviderFactory.Instance.mapManager.OnInitialized += () => _isInitialized = true;
+			locationProviderFactory = LocationProviderFactory.Instance;
+			map = locationProviderFactory.mapManager;
 		}
 
 		void LateUpdate()
 		{
-			if (_isInitialized)
+			_isInitialized = true;
+			if (/*_isInitialized*/map != null)
 			{
-				var map = LocationProviderFactory.Instance.mapManager;
+				//var map = locationProviderFactory.mapManager;
 				transform.localPosition = map.GeoToWorldPosition(LocationProvider.CurrentLocation.LatitudeLongitude);
 			}
         }

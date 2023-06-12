@@ -1,4 +1,5 @@
 using GamePlay;
+using Mapbox.Unity.Location;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -28,15 +29,18 @@ namespace Map
 
         private void Update()
         {
-            float playerDistance = Vector3.Distance(gameManager.CheckLocalPlayer().transform.position, transform.position);
-            if (playerDistance < 20f)
+            if (gameManager.playerObjects.Count > 0)
             {
-                gameObject.GetComponent<Animator>().speed = 3.5f;
-            }
-            else
-            {
-                gameObject.GetComponent<Animator>().speed = 1f;
-            }
+                float playerDistance = Vector3.Distance(gameManager.CheckLocalPlayer().transform.position, transform.position);
+                if (playerDistance < 20f)
+                {
+                    gameObject.GetComponent<Animator>().speed = 3.5f;
+                }
+                else
+                {
+                    gameObject.GetComponent<Animator>().speed = 1f;
+                }
+            }            
         }
         private void OnMouseDown()
         {
