@@ -9,6 +9,7 @@ using InputSystem;
 using GamePlay;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
+using TMPro;
 
 namespace Multiplayer
 {
@@ -16,6 +17,7 @@ namespace Multiplayer
     {
         private GameManager gameManager;
         public GameObject[] playerSkins;
+        public TMP_Text displayTeam;
         public enum Teams
         { 
             English,
@@ -52,6 +54,7 @@ namespace Multiplayer
             };
             //get game managers instance
             gameManager = GameManager.Instance;
+            displayTeam = GameObject.FindGameObjectWithTag("ChatLog").GetComponent<TMP_Text>();
             //add yourself to the player list
             gameManager.playerObjects.Add(this.gameObject);
 
@@ -125,18 +128,22 @@ namespace Multiplayer
             if (teamNum == 0 && Random.Range(gameManager.englishTeam.Count, 5) == 5)
             {
                 isMole = true;
+                displayTeam.text = "English Mole";
             }
             else if (teamNum == 1 && Random.Range(gameManager.italianTeam.Count, 5) == 5)
             {
                 isMole = true;
+                displayTeam.text = "Italian Mole";
             }
             else if (teamNum == 2 && Random.Range(gameManager.russianTeam.Count, 5) == 5)
             {
                 isMole = true;
+                displayTeam.text = "Russian Mole";
             }
             else
             {
                 isMole = false;
+                displayTeam.text = team.ToString();
             }
         }
 

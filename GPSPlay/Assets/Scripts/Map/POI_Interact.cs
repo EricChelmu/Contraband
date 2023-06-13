@@ -1,5 +1,6 @@
 using GamePlay;
 using Mapbox.Unity.Location;
+using Multiplayer;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,10 @@ namespace Map
         [SerializeField] private GameObject riddle;
 
         public GameObject[] poiSkin;
+
+        public Button trapButton;
+
+        public bool isTrapped;
 
         private void Start()
         {
@@ -40,10 +45,20 @@ namespace Map
                 if (playerDistance < 20f)
                 {
                     gameObject.GetComponent<Animator>().speed = 3.5f;
+                    if(gameManager.CheckLocalPlayer().GetComponent<PlayerNetwork>().isMole && isTrapped == false)
+                    {
+                        trapButton.gameObject.SetActive(true);
+                    }
                 }
                 else
                 {
                     gameObject.GetComponent<Animator>().speed = 1f;
+                    trapButton.gameObject.SetActive(false);
+                }
+
+                if (trapButton == true)
+                {
+                    isTrapped = true;
                 }
             }            
         }
@@ -52,8 +67,16 @@ namespace Map
             float playerDistance = Vector3.Distance(gameManager.CheckLocalPlayer().transform.position, transform.position);
             if (playerDistance <= 20f)
             {
-                riddle.SetActive(true);
-            }
+                if (isTrapped != true)
+                {
+                    riddle.SetActive(true);
+                }
+                else
+                {
+                    //play trap minigame
+                    isTrapped = false;
+                }
+            }            
         }
     }
 }

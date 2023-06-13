@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RZCT3107BWA",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 2181,
+        "processId": 28149,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -96,6 +96,18 @@
             "deviceId": "RZCT3107BWA",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 2181,
+            "exited": false
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 27296,
+            "exited": false
+        },
+        {
+            "deviceId": "RZCT3107BWA",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 28149,
             "exited": false
         },
         {
