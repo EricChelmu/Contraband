@@ -74,9 +74,35 @@ namespace Map
                 else
                 {
                     //play trap minigame
-                    isTrapped = false;
+                    LockDown();                    
                 }
             }            
+        }
+        private void LockDown()
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            poiSkin[0].SetActive(false);
+
+            ExecuteAfterTime(60);
+        }
+
+        private bool isCoroutineExecuting = false;
+
+        IEnumerator ExecuteAfterTime(float time)
+        {
+            if (isCoroutineExecuting)
+                yield break;
+
+            isCoroutineExecuting = true;
+
+            yield return new WaitForSeconds(time);
+
+            // Code to execute after the delay
+            gameObject.GetComponent<BoxCollider>().enabled = true;
+            poiSkin[0].SetActive(true);
+            isTrapped = false;
+
+            isCoroutineExecuting = false;
         }
     }
 }
