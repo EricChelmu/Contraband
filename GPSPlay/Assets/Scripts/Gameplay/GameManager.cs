@@ -3,6 +3,7 @@ using Mapbox.Unity.Location;
 using Multiplayer;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Netcode;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace GamePlay
         public List<GameObject> russianTeam = new List<GameObject>();
 
         public List<GameObject> riddles = new List<GameObject>();
+
+        public TMP_Text submiter;
+        public GameObject victoryScreen;
 
         public GameObject CheckLocalPlayer()
         {
@@ -63,6 +67,23 @@ namespace GamePlay
                 }
             }
             return null;
+        }
+        public void CheckSubmit()
+        {
+            if
+                (
+                submiter.text == "godfather" ||
+                submiter.text == "GODFATHER" ||
+                submiter.text == "Godfather" ||
+                submiter.text == "GodFather"
+                )
+            {
+                victoryScreen.SetActive(true);
+            }
+            else
+            {
+                victoryScreen.SetActive(false);
+            }
         }
     }
 }
