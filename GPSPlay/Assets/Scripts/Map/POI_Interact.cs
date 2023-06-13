@@ -10,21 +10,26 @@ using UnityEngine.UI;
 namespace Map
 {
     public class POI_Interact : MonoBehaviour
-    {
-        //private QuestManager _questManager;
-        public TMP_Text message;
-        //private string my_message;
-
+    {    
         private GameManager gameManager;
+        [SerializeField] private GameObject riddle;
+
+        public GameObject[] poiSkin;
 
         private void Start()
         {
-            message = GameObject.FindGameObjectWithTag("ChatLog").GetComponent<TMP_Text>();
-            //_questManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<QuestManager>();
-            //my_message = _questManager.n_message[0];
-            //_questManager.n_message.Remove(my_message);
-
             gameManager = GameManager.Instance;
+            if(gameManager.riddles != null )
+            {
+                int riddleNum = Random.Range(0, gameManager.riddles.Count);
+                riddle = gameManager.riddles[riddleNum];
+                gameManager.riddles.Remove(riddle);
+                if (riddleNum == 9)
+                {
+                    poiSkin[0].SetActive(false);
+                    poiSkin[1].SetActive(true);
+                }
+            }            
         }
 
         private void Update()
@@ -47,9 +52,8 @@ namespace Map
             float playerDistance = Vector3.Distance(gameManager.CheckLocalPlayer().transform.position, transform.position);
             if (playerDistance <= 20f)
             {
-                Debug.Log(playerDistance);
+                riddle.SetActive(true);
             }
-            message.text = playerDistance.ToString();
         }
     }
 }

@@ -17,6 +17,8 @@ namespace GamePlay
         public List<GameObject> italianTeam = new List<GameObject>();
         public List<GameObject> russianTeam = new List<GameObject>();
 
+        public List<GameObject> riddles = new List<GameObject>();
+
         public GameObject CheckLocalPlayer()
         {
             foreach (GameObject i in playerObjects)
@@ -62,12 +64,6 @@ namespace GamePlay
             }
             return null;
         }
-
-        private void Update()
-        {
-            //Debug.Log(LocationProviderFactory.Instance.DefaultLocationProvider.CurrentLocation.LatitudeLongitude.ToString());
-        }
-
     }
 }
 

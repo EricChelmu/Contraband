@@ -59,7 +59,7 @@ namespace InputSystem
             speed = (currentPosition - startPosition).magnitude * Time.deltaTime;
             
             transform.Translate(-direction * 2 * speed, Space.World);
-            MoveStart(currentPosition);            
+            MoveStart(currentPosition);  
         }
         private void FollowPlayer()
         {
